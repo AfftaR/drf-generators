@@ -67,7 +67,7 @@ class BaseGenerator(object):
         return [m + 'Serializer' for m in self.models]
 
     def write_file(self, content, filename):
-        name = os.path.join(os.path.dirname(self.app.__file__), filename)
+        name = os.path.join(os.path.dirname(self.app.__file__), 'api', filename)
         if os.path.exists(name) and not self.force:
             msg = "Are you sure you want to overwrite %s? (y/n): " % filename
             prompt = input  # python3

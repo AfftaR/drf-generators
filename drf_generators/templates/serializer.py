@@ -1,11 +1,11 @@
 __all__ = ['SERIALIZER']
 
 
-SERIALIZER = """from rest_framework.serializers import ModelSerializer
-from {{ app }}.models import {{ models | join:', ' }}
+SERIALIZER = """from rest_framework import serializers
+from {{ app }}.models import *
 {% for model in models %}
 
-class {{ model }}Serializer(ModelSerializer):
+class {{ model }}Serializer(serializers.ModelSerializer):
 
     class Meta:
         model = {{ model }}{% if depth != 0 %}
